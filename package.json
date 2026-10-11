@@ -18,12 +18,11 @@
     "build": "rm -rf dist && bun build ./src/index.ts --outdir ./dist --target node && tsc --emitDeclarationOnly",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "release": "if [ \"$(basename $(git rev-parse --show-toplevel))\" = \"scaffold-ts-project\" ]; then echo '🚨 ERROR: You are still inside the scaffold repository! Run \"bun run scaffold\" first.'; exit 1; fi && bun run test && bun run build && if [ -n \"$(git status --porcelain dist)\" ]; then git add dist/ && git commit -m \"build: automated production asset release\"; fi && git push",
-    "scaffold": "rm -rf .git && git init && git add . && git commit -m 'initial commit: scaffolded from template'"
+    "benchmark": "vitest bench --reporter=verbose --run"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^3.0.0",
-    "typescript": "^5.0.0",
+    "typescript": "^6.0.0",
     "vitest": "^3.0.0"
   },
   "sideEffects": false
